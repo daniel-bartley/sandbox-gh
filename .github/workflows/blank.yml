@@ -22,11 +22,14 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - run: |
-          echo The name of the person or app that initiated the workflow: $GITHUB_ACTOR
-          echo The account ID of the person or app that triggered the initial workflow run: $GITHUB_ACTOR_ID
-      - run: |
-          git config --global user.name $(git log -1 --pretty=fornat:'%aN')
-          git config --global user.email $(git log -1 --pretty=fornat:'%aE')
-          echo $(git config --global get user.name)
-          echo $(git config --global get user.email)
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - run: |
+        echo The name of the person or app that initiated the workflow: $GITHUB_ACTOR
+        echo The account ID of the person or app that triggered the initial workflow run: $GITHUB_ACTOR_ID
+    - run: |
+        git config --global user.name $(git log -1 --pretty=fornat:'%aN')
+        git config --global user.email $(git log -1 --pretty=fornat:'%aE')
+        echo $(git config --global get user.name)
+        echo $(git config --global get user.email)
