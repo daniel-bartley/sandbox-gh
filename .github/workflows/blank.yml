@@ -31,5 +31,4 @@ jobs:
     - run: |
         git config --global user.name $(git log -1 --pretty=fornat:'%aN')
         git config --global user.email $(git log -1 --pretty=fornat:'%aE')
-        echo $(git config --global get user.name)
-        echo $(git config --global get user.email)
+        echo $(git config --list)
