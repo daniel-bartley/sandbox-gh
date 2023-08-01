@@ -1,3 +1,7 @@
+options:
+ logging: CLOUD_LOGGING_ONLY
+projectId: $PROJECT_ID
+
 steps:
 
   - name: 'gcr.io/cloud-builders/git'
@@ -9,8 +13,6 @@ steps:
       git fetch origin $BRANCH_NAME
       git switch $BRANCH_NAME
       git diff --name-only origin/main..$BRANCH_NAME -- | grep "/" | cut -d/ -f1-2 | sort | uniq > /workspace/diff.txt
-      cat /workspace/diff.txt
-      echo got here
       echo count_projects_changed: $(wc -l /workspace/diff.txt)
 
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -27,7 +29,3 @@ steps:
         fi
         gcloud builds submit $line --config=${config}
       done < /workspace/diff.txt
-
-
-options:
- logging: CLOUD_LOGGING_ONLY

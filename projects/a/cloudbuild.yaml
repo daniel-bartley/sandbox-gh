@@ -6,9 +6,10 @@ steps:
     - 'echo'
     - 'cloudbuild job for project_a'
 
+  - name: python
+    entrypoint: pip
+    args: ["install", "cowsay", "--user"]
 
-  - name: 'gcr.io/cloud-builders/git'
-    entrypoint: /bin/bash
-    args:
-    - 'cat'
-    - 'file.txt'
+  - name: python
+    entrypoint: python
+    args: ["-m", "cowsay", "i <3 cloud build"]
