@@ -5,3 +5,9 @@ steps:
     args:
     - 'echo'
     - 'cloudbuild job for project_c'
+
+  - name: 'gcr.io/cloud-builders/git'
+    entrypoint: /bin/bash
+    args:
+    - 'cat'
+    - 'my_file.txt'
