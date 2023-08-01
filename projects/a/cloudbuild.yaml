@@ -1,0 +1,7 @@
+steps:
+
+  - name: 'gcr.io/cloud-builders/git'
+    entrypoint: /bin/bash
+    args:
+    - 'echo'
+    - 'cloudbuild job for project_a'
