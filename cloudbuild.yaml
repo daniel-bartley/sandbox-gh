@@ -7,8 +7,8 @@ steps:
     - |
       git fetch --depth=2 origin main
       git switch $COMMIT_SHA
-      git diff --name-only main..$COMMIT_SHA
-      git diff --name-only main..$COMMIT_SHA | grep "/" | cut -d/ -f1-2 | sort | uniq > /workspace/diff.txt
+      git diff --name-only @{upstream}..$COMMIT_SHA
+      git diff --name-only @{upstream}..$COMMIT_SHA | grep "/" | cut -d/ -f1-2 | sort | uniq > /workspace/diff.txt
       cat /workspace/diff.txt
 
   - name: 'gcr.io/cloud-builders/gcloud'
