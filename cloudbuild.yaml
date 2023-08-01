@@ -8,8 +8,8 @@ steps:
       git fetch --depth=2 origin main
       git fetch origin $BRANCH_NAME
       git switch $BRANCH_NAME
-      git diff --name-only @{main}..$BRANCH_NAME
-      git diff --name-only @{main}..$BRANCH_NAME | grep "/" | cut -d/ -f1-2 | sort | uniq > /workspace/diff.txt
+      git diff --name-only @{u}..$BRANCH_NAME --
+      git diff --name-only @{u}..$BRANCH_NAME -- | grep "/" | cut -d/ -f1-2 | sort | uniq > /workspace/diff.txt
       cat /workspace/diff.txt
 
   - name: 'gcr.io/cloud-builders/gcloud'
