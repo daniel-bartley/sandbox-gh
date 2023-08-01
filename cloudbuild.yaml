@@ -6,9 +6,9 @@ steps:
     - -c
     - |
       git fetch --depth=2 origin main
-      echo hello
       git  log n -1
-      git --no-pager diff --name-only HEAD^ HEAD | grep "/" | cut -d/ -f1-2 | sort | uniq > /workspace/diff.txt
+      git --no-pager diff --name-only main HEAD | grep "/" | cut -d/ -f1-2 | sort | uniq > /workspace/diff.txt
+      cat /workspace/diff.txt
 
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: /bin/bash
