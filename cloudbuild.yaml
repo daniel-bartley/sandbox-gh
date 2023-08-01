@@ -23,10 +23,10 @@ steps:
       while read line; do
         project_name=$(echo $line | cut -d/ -f2)
         config="${line}/cloudbuild.yaml"
-        echo $config
+        echo $config $project_name
         if [[ ! -f "${config}" ]]; then
           echo "no such file"
           continue
         fi
-        gcloud builds submit $project --config=${config}
+        gcloud builds submit $project_name --config=${config}
       done < /workspace/diff.txt
