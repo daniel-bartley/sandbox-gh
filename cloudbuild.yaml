@@ -10,6 +10,7 @@ steps:
       git switch $BRANCH_NAME
       git diff --name-only @{u}..$BRANCH_NAME -- | grep "/" | cut -d/ -f1-2 | sort | uniq > /workspace/diff.txt
       cat /workspace/diff.txt
+      echo got here
 
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: /bin/bash
