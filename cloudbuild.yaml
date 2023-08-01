@@ -6,7 +6,7 @@ steps:
     - -c
     - |
       git fetch --depth=2 origin main
-      git switch $COMMIT_SHA
+      git switch $BRANCH_NAME
       git diff --name-only @{upstream}..$BRANCH_NAME
       git diff --name-only @{upstream}..$BRANCH_NAME | grep "/" | cut -d/ -f1-2 | sort | uniq > /workspace/diff.txt
       cat /workspace/diff.txt
