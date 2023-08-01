@@ -6,7 +6,7 @@ steps:
     - -c
     - |
       git fetch --depth=2 origin main
-      git switch $BRANCH
+      git switch $BRANCH_NAME
       git diff --name-only main..$BRANCH_NAME | grep "/" | cut -d/ -f1-2 | sort | uniq > /workspace/diff.txt
       cat /workspace/diff.txt
 
