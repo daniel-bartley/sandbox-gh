@@ -28,5 +28,5 @@ steps:
           echo "no such file"
           continue
         fi
-        gcloud builds submit $project_name --config=${config}
+        gcloud builds submit . --git-source-dir=${config}
       done < /workspace/diff.txt
